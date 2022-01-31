@@ -1,0 +1,4 @@
+rule openscad
+    command = openscad -o $out $in
+
+build cart_holder.stl: openscad cart_holder.scad
