@@ -1,4 +1,9 @@
-rule openscad
+rule render3d
     command = openscad -o $out $in
 
-build cart_holder.stl: openscad cart_holder.scad
+rule render2d
+    command = openscad -D PNG=1 --colorscheme BeforeDawn -o $out $in
+
+build cart-holder.3mf: render3d cart-holder.scad
+build cart-holder.stl: render3d cart-holder.scad
+build cart-holder.png: render2d cart-holder.scad
